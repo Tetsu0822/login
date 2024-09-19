@@ -10,7 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 import tw.com.donhi.login.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
-    lateinit var binding: ActivityLoginBinding
+    private lateinit var binding: ActivityLoginBinding
     val TAG = LoginActivity::class.java.simpleName
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,9 +29,15 @@ class LoginActivity : AppCompatActivity() {
         var pwd = binding.edPwd.text.toString()
         Log.d(TAG, "login: user: $uid , pwd: $pwd")
         if ("jack".equals(uid) && "1234".equals(pwd)) {
+            //Save to Local
+            getSharedPreferences("login", MODE_PRIVATE)
+                .edit()
+                .putString("userId", uid)
+                .putString("userPwd", pwd)
+                .apply()
+            setResult(RESULT_OK, intent.putExtra("user", uid))
+            setResult(RESULT_OK, intent.putExtra("password", pwd))
             finish()
-        } else {
-            Log.d(TAG, "login: Fail")
         }
     }
 }
