@@ -7,6 +7,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
 import tw.com.donhi.login.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -27,7 +30,7 @@ class LoginActivity : AppCompatActivity() {
     fun login(view: View) {
         var uid = binding.edUid.text.toString()
         var pwd = binding.edPwd.text.toString()
-        Log.d(TAG, "login: user: $uid , pwd: $pwd")
+        //FirebaseDatabase.getInstance().getReference("users").child("userid").child("password")
         if ("jack".equals(uid) && "1234".equals(pwd)) {
             //Save to Local
             getSharedPreferences("login", MODE_PRIVATE)
