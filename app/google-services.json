@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "400072894478",
+    "firebase_url": "https://donhiexaminfo-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "donhiexaminfo",
+    "storage_bucket": "donhiexaminfo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:400072894478:android:f8d8214486bed28085f45f",
+        "android_client_info": {
+          "package_name": "tw.com.donhi.login"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpbxyW0t1wuiUlGNpaH_xql2s4QfNKAaY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
