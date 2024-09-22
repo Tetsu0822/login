@@ -15,17 +15,20 @@ import androidx.activity.result.contract.ActivityResultContracts
 import tw.com.donhi.login.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private val LOGIN_REQ: Int = 11
+    private val LOGON_REQ: Int = 11
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     var logon:Boolean = false
     val TAG = MainActivity::class.java.simpleName
-    var requestLogon = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        var user = getSharedPreferences("login", MODE_PRIVATE)
-            .getString("user", null)
-        var password = getSharedPreferences("login", MODE_PRIVATE)
-            .getString("password", null)
-        Log.d(TAG, "getData: User: $user , Password: $password ")
+    var requestLogon = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()) { result ->
+
+//        var user = getSharedPreferences("login", MODE_PRIVATE)
+//            .getString("user", null)
+//        var password = getSharedPreferences("login", MODE_PRIVATE)
+//            .getString("password", null)
+//        Log.d(TAG, "getData: User: $user , Password: $password ")
+
         if (result.resultCode == RESULT_OK) {
             val user = result.data?.getStringExtra("user")
             val password = result.data?.getStringExtra("password")
@@ -39,8 +42,8 @@ class MainActivity : AppCompatActivity() {
         if (!logon) {
             val intent = Intent(this, LoginActivity::class.java)
             //startActivity(intent)
-            startActivityForResult(intent, LOGIN_REQ)
-            //requestLogon.launch(intent)
+            //startActivityForResult(intent, LOGIN_REQ)
+            requestLogon.launch(intent)
 
         }
 
@@ -58,10 +61,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == LOGIN_REQ) {
+        if (requestCode == LOGON_REQ) {
             if (resultCode != RESULT_OK) {
                 finish()
             }
+        } else {
+            finish()
         }
     }
 

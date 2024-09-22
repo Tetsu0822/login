@@ -15,6 +15,7 @@ import tw.com.donhi.login.databinding.ActivityLoginBinding
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     val TAG = LoginActivity::class.java.simpleName
+    private val LOGON_REQ: Int = 11
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -40,6 +41,7 @@ class LoginActivity : AppCompatActivity() {
                 .apply()
             setResult(RESULT_OK, intent.putExtra("user", uid))
             setResult(RESULT_OK, intent.putExtra("password", pwd))
+
             finish()
         }
     }
